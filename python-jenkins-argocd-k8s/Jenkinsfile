@@ -23,6 +23,7 @@ pipeline {
                     cd python-jenkins-argocd-k8s
                     cat Jenkinsfile
                     echo 'Buid Docker Image'
+                    docker build -t abhishekf5/cicd-e2e:${BUILD_NUMBER} .
                     '''
                 }
             }
