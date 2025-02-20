@@ -4,14 +4,15 @@ pipeline {
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
+        GIT_REPO_URL = 'https://github.com/Angurajnagaraj/Jenkins-Zero-To-Hero/'  // Your GitHub repository URL
+        BRANCH_NAME = 'main'  // Branch you want to checkout, change as needed
     }
     
     stages {
         
         stage('Checkout'){
            steps {
-                url: 'https://github.com/Angurajnagaraj/Jenkins-Zero-To-Hero/',
-                branch: 'main'
+                git url: "${GIT_REPO_URL}", branch: "${BRANCH_NAME}"
            }
         }
 
