@@ -20,28 +20,11 @@ pipeline {
                 script{
                     sh '''
                     cd python-jenkins-argocd-k8s
+                    cat Jenkinsfile
                     echo 'Buid Docker Image'
                     docker build -t angurajnagaraj/cicd-e2e:${BUILD_NUMBER} .
                     '''
                 }
-            }
-        }
-
-        stage('Push the artifacts'){
-           steps{
-                script{
-                    sh '''
-                    echo 'Push to Repo'
-                    docker push angurajnagaraj/cicd-e2e:${BUILD_NUMBER}
-                    '''
-                }
-            }
-        }
-        
-        stage('Checkout K8S manifest SCM'){
-            steps {
-                url: 'https://github.com/Angurajnagaraj/cicd-demo-manifests-repo.git',
-                branch: 'main'
             }
         }
         
